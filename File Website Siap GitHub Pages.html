@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Munthe Kambing Perbulan - Peternakan & Supplier Kambing Etawa, Daging Mentah & Susu Murni Medan</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#24452c',
+              dark: '#18311e',
+              light: '#315c3c',
+              gold: '#e7c873',
+              goldhover: '#d4b35e',
+              cream: '#f7f4ed',
+              soft: '#e9f0e8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .bg-grid-pattern {
+      background-size: 30px 30px;
+      background-image: radial-gradient(circle, rgba(36,69,44,0.08) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-brand-cream text-gray-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-gold selection:text-brand-dark">
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur-md text-white shadow-lg transition-all border-b border-brand-gold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo & Brand Name -->
+      <a href="#beranda" class="flex items-center gap-3 group">
+        <div class="relative w-12 h-12 rounded-xl bg-white p-1 shadow-md border-2 border-brand-gold overflow-hidden flex items-center justify-center transition-transform group-hover:scale-105">
+          <img src="1000015829.png" alt="Munthe Kambing Perbulan Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/24452c/e7c873?text=MUNTHE'">
+        </div>
+        <div>
+          <span class="text-xl sm:text-2xl font-black tracking-tight text-white block leading-none">MUNTHE</span>
+          <span class="text-xs sm:text-sm font-semibold text-brand-gold tracking-widest uppercase block mt-1">Kambing Perbulan</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+        <a href="#beranda" class="hover:text-brand-gold transition-colors">Beranda</a>
+        <a href="#produk" class="hover:text-brand-gold transition-colors">Produk Murni</a>
+        <a href="#kalkulator" class="hover:text-brand-gold transition-colors">Kalkulator Estimator</a>
+        <a href="#tentang" class="hover:text-brand-gold transition-colors">Tentang Kami</a>
+        <a href="#kontak" class="hover:text-brand-gold transition-colors">Kontak</a>
+      </nav>
+
+      <!-- Cart Button & Mobile Menu Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Floating Cart Trigger -->
+        <button onclick="toggleCartModal()" class="relative bg-brand-gold hover:bg-brand-goldhover text-brand-dark p-2.5 rounded-xl font-bold transition-all shadow-md flex items-center gap-2 group">
+          <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+          <span class="hidden sm:inline text-xs uppercase tracking-wider font-extrabold">Keranjang</span>
+          <span id="cart-badge-count" class="bg-red-600 text-white text-xs font-black px-2 py-0.5 rounded-full min-w-[20px] text-center shadow">0</span>
+        </button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden text-white p-2 rounded-lg hover:bg-brand-light focus:outline-none">
+          <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-brand-gold/20 px-4 pt-2 pb-6 space-y-3">
+      <a href="#beranda" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-brand-gold font-medium">Beranda</a>
+      <a href="#produk" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-brand-gold font-medium">Produk Murni</a>
+      <a href="#kalkulator" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-brand-gold font-medium">Kalkulator Estimator</a>
+      <a href="#tentang" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-brand-gold font-medium">Tentang Kami</a>
+      <a href="#kontak" onclick="toggleMobileMenu()" class="block py-2 text-white hover:text-brand-gold font-medium">Kontak</a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="beranda" class="relative bg-gradient-to-b from-brand-dark via-brand to-brand-dark text-white overflow-hidden py-16 lg:py-24">
+    <div class="absolute inset-0 opacity-10 bg-grid-pattern"></div>
+    <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-brand-gold/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Banner Content -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 bg-brand-gold/20 border border-brand-gold/40 text-brand-gold text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-sm">
+            <i data-lucide="shield-check" class="w-4 h-4 text-brand-gold"></i> 100% Produk Murni & Segar
+          </div>
+          
+          <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+            Pusat Peternakan <span class="text-brand-gold">Kambing Etawa</span> & Supplier Produk Murni Medan
+          </h1>
+
+          <p class="text-gray-200 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Menyediakan kambing Etawa berkualitas tinggi untuk bibit, perahan, aqiqah & kurban, pasokan daging kambing mentah segar higienis, dan susu kambing murni segar tanpa bahan campuran.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+            <a href="#produk" class="bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-extrabold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+              <i data-lucide="store" class="w-5 h-5"></i> Lihat 3 Produk Murni
+            </a>
+            <a href="https://wa.me/6282173543495?text=Halo%20Munthe%20Kambing%20Perbulan%2C%20saya%20ingin%20konsultasi%20mengenai%20produk%20kambing." target="_blank" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-8 py-4 rounded-xl transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+              <i data-lucide="message-circle" class="w-5 h-5 text-green-400"></i> Tanya via WhatsApp
+            </a>
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 text-center">
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-gold">100%</p>
+              <p class="text-xs text-gray-300">Segar & Murni</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-gold">Halal</p>
+              <p class="text-xs text-gray-300">Potong Syar'i</p>
+            </div>
+            <div>
+              <p class="text-xl sm:text-2xl font-black text-brand-gold">Medan</p>
+              <p class="text-xs text-gray-300">Pengiriman Cepat</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Logo Showcase -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-md bg-gradient-to-br from-white/10 to-white/5 border border-white/20 p-8 rounded-3xl backdrop-blur-md shadow-2xl text-center flex flex-col items-center">
+            
+            <span class="absolute -top-4 bg-brand-gold text-brand-dark text-xs font-black px-4 py-1 rounded-full uppercase tracking-widest shadow">
+              Official Logo
+            </span>
+
+            <div class="w-52 h-52 bg-white rounded-2xl p-4 shadow-2xl border-4 border-brand-gold flex items-center justify-center my-4 group transition-transform duration-500 hover:rotate-2">
+              <img src="1000015829.png" alt="Munthe Kambing Perbulan Official Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/300x300/24452c/e7c873?text=MUNTHE+KAMBING'">
+            </div>
+
+            <h3 class="text-xl font-bold text-white mt-2">Munthe Kambing Perbulan</h3>
+            <p class="text-xs text-gray-300 mt-1">Peternakan Terpercaya & Penyedia Hasil Murni Kambing Berkualitas di Medan</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG PRODUCTS SECTION (ONLY 3 PURE PRODUCTS) -->
+  <section id="produk" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto mb-10">
+      <span class="text-brand-light font-extrabold uppercase text-xs tracking-widest bg-brand-soft px-3 py-1 rounded-full border border-brand/10">Katalog Utama</span>
+      <h2 class="text-3xl sm:text-4xl font-black text-brand-dark mt-3">3 Produk Murni & Mentah</h2>
+      <p class="text-gray-600 mt-2 text-sm sm:text-base">Kami berfokus penuh pada 3 produk murni hasil peternakan (Tanpa masakan, tanpa iga, tanpa olahan siap saji).</p>
+    </div>
+
+    <!-- Search & Category Filter Controls -->
+    <div class="max-w-2xl mx-auto mb-10 space-y-4">
+      <div class="relative">
+        <input type="text" id="product-search" oninput="filterProducts()" placeholder="Cari produk murni (Kambing Etawa, Daging Mentah, Susu Murni)..." class="w-full pl-11 pr-4 py-3.5 bg-white rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-brand focus:border-brand text-sm">
+        <i data-lucide="search" class="w-5 h-5 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2" id="filter-container">
+        <button onclick="setCategoryFilter('all')" class="filter-btn active bg-brand text-white px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all shadow-sm">Semua Produk (3)</button>
+        <button onclick="setCategoryFilter('etawa')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all">🐐 Kambing Etawa</button>
+        <button onclick="setCategoryFilter('daging')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all">🥩 Daging Mentah</button>
+        <button onclick="setCategoryFilter('susu')" class="filter-btn bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all">🥛 Susu Murni</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+      
+      <!-- ITEM 1: Kambing Etawa Hidup -->
+      <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col" data-category="etawa" data-name="kambing etawa hidup bibit perah aqiqah kurban">
+        <div class="relative h-64 bg-gray-100 overflow-hidden group">
+          <img src="watermarked_img_11807435659712087434.png" alt="Kambing Etawa Murni Munthe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=800&q=80'">
+          <span class="absolute top-4 left-4 bg-brand text-white text-xs font-bold px-3 py-1 rounded-full shadow">Ternak Hidup</span>
+          <span class="absolute top-4 right-4 bg-brand-gold text-brand-dark text-xs font-extrabold px-3 py-1 rounded-full shadow">Foto Asli</span>
+        </div>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-dark">Kambing Etawa Murni (Ekor)</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Kambing ras Etawa murni unggulan, sehat, bebas penyakit, telinga panjang khas. Sangat cocok untuk bibit peternakan, perahan susu, kurban, & aqiqah.
+            </p>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-2xl font-black text-brand">Rp 2.800.000</span>
+              <span class="text-xs text-gray-500 font-medium">/ Ekor</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex gap-2">
+            <button onclick="addToCart(1, 'Kambing Etawa Murni', 2800000, 'Ekor', 'watermarked_img_11807435659712087434.png')" class="flex-1 bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-xs sm:text-sm flex items-center justify-center gap-2 shadow">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i> + Keranjang
+            </button>
+            <a href="https://wa.me/6282173543495?text=Halo%20Munthe%20Kambing%20Perbulan%2C%20saya%20tertarik%20dengan%20Kambing%20Etawa%20Murni." target="_blank" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold p-3 rounded-xl transition-colors flex items-center justify-center">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 2: Daging Kambing Mentah Segar -->
+      <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col" data-category="daging" data-name="daging kambing mentah segar potong">
+        <div class="relative h-64 bg-gray-100 overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=800&q=80" alt="Daging Kambing Mentah Segar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-red-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">100% Mentah</span>
+        </div>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-dark">Daging Kambing Mentah Segar</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Daging kambing potong segar/mentah higienis tanpa olahan masakan. Dipotong syar'i sesuai pemesanan harian. Fresh dan tanpa bahan pengawet.
+            </p>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-2xl font-black text-brand">Rp 135.000</span>
+              <span class="text-xs text-gray-500 font-medium">/ Kg</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex gap-2">
+            <button onclick="addToCart(2, 'Daging Kambing Mentah Segar', 135000, 'Kg', 'https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=300&q=80')" class="flex-1 bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-xs sm:text-sm flex items-center justify-center gap-2 shadow">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i> + Keranjang
+            </button>
+            <a href="https://wa.me/6282173543495?text=Halo%20Munthe%20Kambing%20Perbulan%2C%20saya%20ingin%20pesan%20Daging%20Kambing%20Mentah." target="_blank" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold p-3 rounded-xl transition-colors flex items-center justify-center">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ITEM 3: Susu Kambing Murni Fresh -->
+      <div class="product-card bg-white rounded-3xl overflow-hidden shadow-md border border-gray-100 hover:shadow-xl transition-all duration-300 flex flex-col" data-category="susu" data-name="susu kambing etawa murni fresh segar botol">
+        <div class="relative h-64 bg-gray-100 overflow-hidden group">
+          <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=800&q=80" alt="Susu Kambing Murni Fresh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <span class="absolute top-4 left-4 bg-sky-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Susu Murni</span>
+        </div>
+        <div class="p-6 flex flex-col flex-grow justify-between">
+          <div>
+            <h3 class="text-xl font-bold text-brand-dark">Susu Kambing Etawa Murni (Fresh)</h3>
+            <p class="text-gray-600 text-xs sm:text-sm mt-2 leading-relaxed">
+              Susu kambing perahan segar murni murni tanpa tambahan air, pemanis, atau pengawet. Nutrisi tinggi alami untuk kesehatan keluarga Anda.
+            </p>
+            <div class="mt-4 flex items-baseline gap-2">
+              <span class="text-2xl font-black text-brand">Rp 25.000</span>
+              <span class="text-xs text-gray-500 font-medium">/ Botol (500 ml)</span>
+            </div>
+          </div>
+          <div class="mt-6 pt-4 border-t border-gray-100 flex gap-2">
+            <button onclick="addToCart(3, 'Susu Kambing Etawa Murni (500ml)', 25000, 'Botol', 'https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=300&q=80')" class="flex-1 bg-brand hover:bg-brand-dark text-white font-bold py-3 rounded-xl transition-colors text-xs sm:text-sm flex items-center justify-center gap-2 shadow">
+              <i data-lucide="shopping-cart" class="w-4 h-4"></i> + Keranjang
+            </button>
+            <a href="https://wa.me/6282173543495?text=Halo%20Munthe%20Kambing%20Perbulan%2C%20saya%20ingin%20pesan%20Susu%20Kambing%20Murni." target="_blank" class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold p-3 rounded-xl transition-colors flex items-center justify-center">
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ORDER ESTIMATOR CALCULATOR -->
+  <section id="kalkulator" class="py-16 bg-brand-soft border-y border-brand/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border border-gray-200 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Explanatory Info -->
+        <div class="lg:col-span-5 space-y-4">
+          <span class="bg-brand-gold/30 text-brand-dark text-xs font-black px-3 py-1 rounded-full uppercase tracking-widest inline-block">Kalkulator Pintar</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-brand-dark">Kalkulator Estimasi Biaya</h2>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Hitung perkiraan total pembelian Kambing Etawa, Daging Mentah, atau Susu Murni sesuai kuantitas yang Anda butuhkan secara otomatis sebelum memesan.
+          </p>
+
+          <div class="space-y-3 pt-2">
+            <div class="flex items-start gap-3 text-xs sm:text-sm text-gray-700">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0 mt-0.5"></i>
+              <span>Harga Kambing Etawa dapat disesuaikan dengan bobot pasti di lokasi.</span>
+            </div>
+            <div class="flex items-start gap-3 text-xs sm:text-sm text-gray-700">
+              <i data-lucide="check-circle-2" class="w-5 h-5 text-brand flex-shrink-0 mt-0.5"></i>
+              <span>Daging mentah dipotong segar & dikemas higienis sesuai Kg.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Calculator Input Controls -->
+        <div class="lg:col-span-7 bg-brand-cream p-6 sm:p-8 rounded-2xl border border-brand/10 shadow-inner">
+          <form id="calculator-form" onsubmit="event.preventDefault();" class="space-y-6">
+            
+            <!-- Category Selection -->
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Pilih Produk Murni</label>
+              <select id="calc-item" onchange="calculateEstimate()" class="w-full bg-white border border-gray-300 rounded-xl p-3 font-semibold text-brand-dark focus:ring-2 focus:ring-brand focus:border-brand">
+                <option value="2800000" data-unit="Ekor" data-title="Kambing Etawa Murni" data-img="watermarked_img_11807435659712087434.png">🐐 Kambing Etawa Murni - Rp 2.800.000 / Ekor</option>
+                <option value="135000" data-unit="Kg" data-title="Daging Kambing Mentah Segar" data-img="https://images.unsplash.com/photo-1603048297172-c92544798d5a?auto=format&fit=crop&w=300&q=80">🥩 Daging Kambing Mentah Segar - Rp 135.000 / Kg</option>
+                <option value="25000" data-unit="Botol" data-title="Susu Kambing Etawa Murni (500ml)" data-img="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=300&q=80">🥛 Susu Kambing Etawa Murni (500ml) - Rp 25.000 / Botol</option>
+              </select>
+            </div>
+
+            <!-- Quantity Slider & Input -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Jumlah Kuantitas (<span id="calc-unit-label">Ekor</span>)</label>
+                <span id="calc-qty-display" class="text-lg font-black text-brand">1</span>
+              </div>
+              <input type="range" id="calc-range" min="1" max="50" value="1" oninput="syncQtyInput(this.value)" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand">
+              <div class="flex justify-between text-[11px] text-gray-500 mt-1">
+                <span>1</span>
+                <span>25</span>
+                <span>50</span>
+              </div>
+            </div>
+
+            <!-- Result Box -->
+            <div class="bg-brand text-white p-5 rounded-xl flex flex-col sm:flex-row justify-between items-center gap-4 shadow">
+              <div>
+                <span class="text-xs text-brand-gold uppercase tracking-wider font-semibold block">Estimasi Total Biaya</span>
+                <span id="calc-total" class="text-2xl sm:text-3xl font-black">Rp 2.800.000</span>
+              </div>
+              <button type="button" onclick="addCalculatedToCart()" class="w-full sm:w-auto bg-brand-gold hover:bg-brand-goldhover text-brand-dark font-black px-6 py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-xs sm:text-sm shadow">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambahkan Ke Keranjang
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="tentang" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-br from-brand-dark to-brand text-white rounded-3xl p-8 sm:p-12 lg:p-16 shadow-2xl relative overflow-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+        
+        <!-- About Logo Visual -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="bg-white p-6 rounded-3xl shadow-xl text-center border-4 border-brand-gold max-w-sm w-full">
+            <div class="w-40 h-40 mx-auto bg-brand rounded-2xl p-2 border-2 border-brand-gold flex items-center justify-center mb-4 shadow">
+              <img src="1000015829.png" alt="Munthe Kambing Perbulan Official Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/200x200/24452c/e7c873?text=MUNTHE'">
+            </div>
+            <h3 class="text-2xl font-black text-brand-dark">Munthe Kambing</h3>
+            <p class="text-xs font-bold text-brand-gold uppercase tracking-widest mt-1">Perbulan • Medan</p>
+            <p class="text-xs text-gray-600 mt-3 leading-relaxed">
+              Peternakan terpercaya penyedia Kambing Etawa murni, Daging Mentah potong baru, dan Susu Murni perahan segar.
+            </p>
+          </div>
+        </div>
+
+        <!-- About Text & Highlights -->
+        <div class="lg:col-span-7 space-y-6">
+          <span class="bg-brand-gold/20 text-brand-gold text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block">Tentang Peternakan Kami</span>
+          
+          <h2 class="text-3xl sm:text-4xl font-black text-white leading-tight">
+            Komitmen Kemurnian & Segar Dari Peternakan Langsung
+          </h2>
+
+          <p class="text-gray-200 text-sm sm:text-base leading-relaxed font-light">
+            <strong>Munthe Kambing Perbulan</strong> berdiri sebagai penyedia utama ternak kambing Etawa murni di wilayah Medan dan sekitarnya. Kami tidak menjual olahan masakan/siap saji, melainkan secara profesional berfokus penuh pada pasokan kambing etawa hidup, daging mentah segar potong baru, serta susu perahan murni tanpa campuran.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+              <div class="flex items-center gap-3 text-brand-gold font-bold mb-1">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+                <span>Ternak Sehat & Terawat</span>
+              </div>
+              <p class="text-xs text-gray-300">Pakan berkualitas dan pemeliharaan kesehatan berkala di peternakan.</p>
+            </div>
+
+            <div class="bg-white/10 p-4 rounded-xl border border-white/10">
+              <div class="flex items-center gap-3 text-brand-gold font-bold mb-1">
+                <i data-lucide="droplet" class="w-5 h-5"></i>
+                <span>Susu Murni Tanpa Campuran</span>
+              </div>
+              <p class="text-xs text-gray-300">Proses perahan higienis tanpa tambahan air, gula, atau bahan pengawet.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="kontak" class="py-16 bg-white border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-brand-light font-extrabold uppercase text-xs tracking-widest bg-brand-soft px-3 py-1 rounded-full">Hubungi Kami</span>
+        <h2 class="text-3xl font-black text-brand-dark mt-3">Lokasi & Layanan Pemesanan</h2>
+        <p class="text-gray-600 text-sm mt-2">Siap melayani kebutuhan kambing etawa, daging mentah, dan susu murni untuk wilayah Medan & sekitarnya.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Contact Card 1: WhatsApp -->
+        <div class="bg-brand-cream p-6 rounded-2xl border border-gray-200 text-center flex flex-col items-center justify-center hover:shadow-lg transition-all">
+          <div class="w-14 h-14 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+            <i data-lucide="phone-call" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-bold text-brand-dark text-lg">WhatsApp & Telp</h3>
+          <p class="text-xs text-gray-600 mt-1">Layanan pemesanan cepat</p>
+          <p class="text-xl font-extrabold text-brand mt-3">0821-7354-3495</p>
+          <a href="https://wa.me/6282173543495" target="_blank" class="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-2.5 rounded-xl transition-colors inline-flex items-center gap-2">
+            <i data-lucide="message-square" class="w-4 h-4"></i> Chat WhatsApp
+          </a>
+        </div>
+
+        <!-- Contact Card 2: Location -->
+        <div class="bg-brand-cream p-6 rounded-2xl border border-gray-200 text-center flex flex-col items-center justify-center hover:shadow-lg transition-all">
+          <div class="w-14 h-14 bg-amber-100 text-amber-700 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+            <i data-lucide="map-pin" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-bold text-brand-dark text-lg">Lokasi Peternakan</h3>
+          <p class="text-xs text-gray-600 mt-1">Area Operasional Utama</p>
+          <p class="text-base font-bold text-gray-800 mt-3">Medan, Sumatera Utara</p>
+          <p class="text-xs text-gray-500 mt-1">Indonesia</p>
+        </div>
+
+        <!-- Contact Card 3: Hours -->
+        <div class="bg-brand-cream p-6 rounded-2xl border border-gray-200 text-center flex flex-col items-center justify-center hover:shadow-lg transition-all">
+          <div class="w-14 h-14 bg-sky-100 text-sky-700 rounded-2xl flex items-center justify-center mb-4 shadow-sm">
+            <i data-lucide="clock" class="w-7 h-7"></i>
+          </div>
+          <h3 class="font-bold text-brand-dark text-lg">Jam Operasional</h3>
+          <p class="text-xs text-gray-600 mt-1">Pengiriman & Layanan Pemesanan</p>
+          <p class="text-base font-bold text-gray-800 mt-3">Senin - Minggu</p>
+          <p class="text-xs text-gray-500 mt-1">08:00 - 18:00 WIB</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-brand-dark text-white border-t border-brand-gold/20 pt-12 pb-8 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-white/10">
+        
+        <!-- Brand Info -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white p-1 flex items-center justify-center">
+            <img src="1000015829.png" alt="Munthe Logo" class="w-full h-full object-contain">
+          </div>
+          <div>
+            <span class="text-lg font-black tracking-wide text-white block leading-none">MUNTHE KAMBING</span>
+            <span class="text-xs text-brand-gold tracking-widest uppercase">Perbulan Medan</span>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-300 font-medium">
+          <a href="#beranda" class="hover:text-brand-gold transition-colors">Beranda</a>
+          <a href="#produk" class="hover:text-brand-gold transition-colors">Produk Murni</a>
+          <a href="#kalkulator" class="hover:text-brand-gold transition-colors">Estimator Biaya</a>
+          <a href="#tentang" class="hover:text-brand-gold transition-colors">Tentang Kami</a>
+          <a href="#kontak" class="hover:text-brand-gold transition-colors">Kontak</a>
+        </div>
+      </div>
+
+      <div class="pt-6 text-center text-xs text-gray-400">
+        <p>&copy; 2026 <strong>Munthe Kambing Perbulan</strong> Medan. Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="mt-1 text-[11px] text-gray-500">Pusat Kambing Etawa • Daging Mentah • Susu Murni Segar</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SHOPPING CART MODAL SLIDE-OVER -->
+  <div id="cart-modal" class="fixed inset-0 z-50 hidden overflow-hidden">
+    <div onclick="toggleCartModal()" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+
+    <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+        
+        <!-- Cart Header -->
+        <div class="p-6 bg-brand-dark text-white flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-gold"></i>
+            <h3 class="text-lg font-bold">Keranjang Pesanan</h3>
+          </div>
+          <button onclick="toggleCartModal()" class="text-gray-300 hover:text-white p-1 rounded-lg">
+            <i data-lucide="x" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+        <!-- Cart Items List Container -->
+        <div id="cart-items-container" class="flex-grow p-6 overflow-y-auto space-y-4">
+          <!-- Dynamic Cart Items Rendered Here -->
+        </div>
+
+        <!-- Cart Footer & WhatsApp Checkout Form -->
+        <div class="p-6 bg-gray-50 border-t border-gray-200 space-y-4">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-gray-600 font-medium">Subtotal Estimasi:</span>
+            <span id="cart-subtotal" class="text-xl font-black text-brand-dark">Rp 0</span>
+          </div>
+
+          <!-- Customer Input -->
+          <div class="space-y-3 pt-2">
+            <input type="text" id="cust-name" placeholder="Nama Lengkap Pemesan *" class="w-full text-xs sm:text-sm p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand">
+            <textarea id="cust-address" rows="2" placeholder="Alamat Pengiriman di Medan & Catatan Tambahan *" class="w-full text-xs sm:text-sm p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-brand"></textarea>
+          </div>
+
+          <!-- WhatsApp Checkout Button -->
+          <button onclick="checkoutToWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg text-sm">
+            <i data-lucide="message-circle" class="w-5 h-5"></i> Kirim Pesanan via WhatsApp
+          </button>
+
+          <p class="text-[11px] text-gray-500 text-center">
+            Pesanan akan diformat otomatis dan dikirimkan ke WhatsApp resmi Munthe Kambing Perbulan (0821-7354-3495).
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT INTERACTION LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Application Cart State
+    let cart = [];
+    let currentCategoryFilter = 'all';
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Toggle Cart Drawer Modal
+    function toggleCartModal() {
+      const modal = document.getElementById('cart-modal');
+      modal.classList.toggle('hidden');
+    }
+
+    // Category Filter Button Handler
+    function setCategoryFilter(category) {
+      currentCategoryFilter = category;
+      const buttons = document.querySelectorAll('#filter-container button');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-brand', 'text-white');
+        btn.classList.add('bg-white', 'text-gray-700');
+      });
+
+      event.target.classList.add('active', 'bg-brand', 'text-white');
+      event.target.classList.remove('bg-white', 'text-gray-700');
+
+      filterProducts();
+    }
+
+    // Combined Search and Category Filter
+    function filterProducts() {
+      const query = document.getElementById('product-search').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.product-card');
+
+      cards.forEach(card => {
+        const categoryMatch = currentCategoryFilter === 'all' || card.dataset.category === currentCategoryFilter;
+        const nameMatch = !query || card.dataset.name.toLowerCase().includes(query);
+
+        if (categoryMatch && nameMatch) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Add Item to Shopping Cart
+    function addToCart(id, title, price, unit, image) {
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ id, title, price, unit, image, qty: 1 });
+      }
+      updateCartUI();
+      toggleCartModal();
+    }
+
+    // Remove Item from Cart
+    function removeFromCart(id) {
+      cart = cart.filter(item => item.id !== id);
+      updateCartUI();
+    }
+
+    // Change Item Quantity
+    function changeQty(id, delta) {
+      const item = cart.find(item => item.id === id);
+      if (item) {
+        item.qty += delta;
+        if (item.qty <= 0) {
+          removeFromCart(id);
+        } else {
+          updateCartUI();
+        }
+      }
+    }
+
+    // Currency Formatter
+    function formatRupiah(amount) {
+      return 'Rp ' + amount.toLocaleString('id-ID');
+    }
+
+    // Update Cart Modal and Counter UI
+    function updateCartUI() {
+      const container = document.getElementById('cart-items-container');
+      const badge = document.getElementById('cart-badge-count');
+      const subtotalEl = document.getElementById('cart-subtotal');
+
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      badge.textContent = totalQty;
+
+      const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+      subtotalEl.textContent = formatRupiah(totalAmount);
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-gray-400 space-y-3">
+            <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto stroke-1"></i>
+            <p class="text-sm font-medium">Keranjang belanja Anda masih kosong.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = cart.map(item => `
+          <div class="flex items-center gap-3 bg-gray-50 p-3 rounded-2xl border border-gray-100">
+            <img src="${item.image}" alt="${item.title}" class="w-16 h-16 object-cover rounded-xl flex-shrink-0" onerror="this.onerror=null; this.src='https://placehold.co/100x100/24452c/e7c873?text=Munthe'">
+            <div class="flex-grow">
+              <h4 class="font-bold text-xs sm:text-sm text-brand-dark leading-tight">${item.title}</h4>
+              <p class="text-xs text-brand font-black mt-1">${formatRupiah(item.price)} <span class="text-[10px] text-gray-500 font-normal">/${item.unit}</span></p>
+              
+              <div class="flex items-center gap-2 mt-2">
+                <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-md flex items-center justify-center text-xs font-bold">-</button>
+                <span class="text-xs font-bold px-1">${item.qty}</span>
+                <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 bg-gray-200 hover:bg-gray-300 rounded-md flex items-center justify-center text-xs font-bold">+</button>
+              </div>
+            </div>
+            <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-600 p-1">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+
+      lucide.createIcons();
+    }
+
+    // Sync Quantity Slider with Input Label
+    function syncQtyInput(val) {
+      document.getElementById('calc-qty-display').textContent = val;
+      calculateEstimate();
+    }
+
+    // Calculator Logic
+    function calculateEstimate() {
+      const select = document.getElementById('calc-item');
+      const selectedOption = select.options[select.selectedIndex];
+      const price = parseInt(select.value);
+      const unit = selectedOption.getAttribute('data-unit');
+      const qty = parseInt(document.getElementById('calc-range').value);
+
+      document.getElementById('calc-unit-label').textContent = unit;
+      const total = price * qty;
+      document.getElementById('calc-total').textContent = formatRupiah(total);
+    }
+
+    // Add Calculated Result directly to Cart
+    function addCalculatedToCart() {
+      const select = document.getElementById('calc-item');
+      const selectedOption = select.options[select.selectedIndex];
+      const price = parseInt(select.value);
+      const unit = selectedOption.getAttribute('data-unit');
+      const title = selectedOption.getAttribute('data-title');
+      const image = selectedOption.getAttribute('data-img');
+      const qty = parseInt(document.getElementById('calc-range').value);
+
+      const existing = cart.find(item => item.title === title);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({
+          id: Date.now(),
+          title: title,
+          price: price,
+          unit: unit,
+          image: image,
+          qty: qty
+        });
+      }
+
+      updateCartUI();
+      toggleCartModal();
+    }
+
+    // Format & Send Order Message to WhatsApp
+    function checkoutToWhatsApp() {
+      if (cart.length === 0) {
+        alert('Keranjang belanja Anda masih kosong! Silakan pilih produk terlebih dahulu.');
+        return;
+      }
+
+      const name = document.getElementById('cust-name').value.trim();
+      const address = document.getElementById('cust-address').value.trim();
+
+      if (!name || !address) {
+        alert('Mohon lengkapi Nama Pemesan dan Alamat Pengiriman.');
+        return;
+      }
+
+      let message = `*HALO MUNTHE KAMBING PERBULAN*\nSaya ingin memesan produk murni berikut:\n\n`;
+      
+      let totalAmount = 0;
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.qty;
+        totalAmount += itemTotal;
+        message += `${index + 1}. *${item.title}*\n   • Jumlah: ${item.qty} ${item.unit}\n   • Biaya: ${formatRupiah(itemTotal)}\n`;
+      });
+
+      message += `\n*ESTIMASI TOTAL: ${formatRupiah(totalAmount)}*\n\n`;
+      message += `*DATA PEMESAN:*\n`;
+      message += `• Nama: ${name}\n`;
+      message += `• Alamat/Catatan: ${address}\n\n`;
+      message += `Mohon info ketersediaan stok & konfirmasi total pembayaran. Terima kasih!`;
+
+      const encodedMessage = encodeURIComponent(message);
+      const waURL = `https://wa.me/6282173543495?text=${encodedMessage}`;
+      window.open(waURL, '_blank');
+    }
+
+    // Initial Runs
+    calculateEstimate();
+    updateCartUI();
+  </script>
+</body>
+</html>
